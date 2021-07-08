@@ -58,103 +58,94 @@ public class BancoHierro {
                         datosCuenta[i] = new Cuenta();
                         int numero = (int) (Math.random() * 1000 + 100);
                         datosCuenta[i].setNroCuenta(numero);
-                        System.out.println("Sr(a). "+datos.getNombre()+" "+datos.getApellido()+" Digite el saldo inicial para la cuenta: " + datosCuenta[i].getNroCuenta());
+                        System.out.println("Sr(a). " + datos.getNombre() + " " + datos.getApellido() + " Digite el saldo inicial para la cuenta: " + datosCuenta[i].getNroCuenta());
                         datosCuenta[i].setSaldo(saldo = leer.nextInt());
                         i++;
                     } else {
-                        System.out.println("\"Sr(a). "+datos.getNombre()+" "+datos.getApellido()+" ya no se pueden agregar mas cuentas"+"\n");
+                        System.out.println("\"Sr(a). " + datos.getNombre() + " " + datos.getApellido() + " ya no se pueden agregar mas cuentas" + "\n");
                     }
                     break;
                 case 2:
-                     for (int j = 0; j < datosCuenta.length; j++) {
+                    for (int j = 0; j < datosCuenta.length; j++) {
                         if (datosCuenta[j] == null) {
                             System.out.print("");
                         } else {
-                            System.out.print("["+datosCuenta[j].getNroCuenta() + "] - ");
+                            System.out.print("[" + datosCuenta[j].getNroCuenta() + "] ");
                         }
 
                     }
                     break;
                 case 3:
-                    System.out.println("Sr(a). "+datos.getNombre()+" "+datos.getApellido()+" digita el numero de cuenta");
+                    System.out.println("Sr(a). " + datos.getNombre() + " " + datos.getApellido() + " digita el numero de cuenta");
                     int cuentaBuscada = leer.nextInt();
                     bandera = false;
                     int posicion = 0;
                     for (int j = 0; j < datosCuenta.length; j++) {
-                        //int data = datosCuenta[j].getNroCuenta();
-                        //if (cuentaBuscada == data) {
-                            
-                            if(datosCuenta[j].getNroCuenta()==cuentaBuscada){
-                            
+                        if (datosCuenta[j].getNroCuenta() == cuentaBuscada) {
                             bandera = true;
                             posicion = j;
-                            //System.out.println("" + datosCuenta[j].getNroCuenta());
                             break;
-                        } 
-
+                        }
                     }
                     if (bandera == true) {
-                        System.out.println("Sr(a). "+datos.getNombre()+" "+datos.getApellido()+" ingresa el valor a consignar");
+                        System.out.println("Sr(a). " + datos.getNombre() + " " + datos.getApellido() + " ingresa el valor a consignar");
                         int valor = leer.nextInt();
                         datosCuenta[posicion].agregarSaldo(valor);
-                        System.out.println("Sr(a). "+datos.getNombre()+" "+datos.getApellido()+" la consignacion se ha realizado con exito\n");
+                        System.out.println("Sr(a). " + datos.getNombre() + " " + datos.getApellido() + " la consignacion se ha realizado con exito\n");
+                    } else {
+                        System.err.println("Sr(a). " + datos.getNombre() + " " + datos.getApellido() + " no se pudo realizar la consignacion cuenta no existe");
                     }
                     break;
                 case 4:
-                    System.out.println("Sr(a). "+datos.getNombre()+" "+datos.getApellido()+" digita el numero de cuenta");
+                    System.out.println("Sr(a). " + datos.getNombre() + " " + datos.getApellido() + " digita el numero de cuenta");
                     int cuentaBuscada2 = leer.nextInt();
                     bandera = false;
                     int posicion2 = 0;
                     for (int j = 0; j < datosCuenta.length; j++) {
-                        int data = datosCuenta[j].getNroCuenta();
-                        if (cuentaBuscada2 == data) {
+                        if (datosCuenta[j].getNroCuenta() == cuentaBuscada2) {
                             bandera = true;
                             posicion2 = j;
-                            //System.out.println("" + datosCuenta[j].getNroCuenta());
                             break;
-                        } 
-
+                        }
                     }
                     if (bandera == true) {
-                        System.out.println("Sr(a). "+datos.getNombre()+" "+datos.getApellido()+" ingresa el valor a retirar");
+                        System.out.println("Sr(a). " + datos.getNombre() + " " + datos.getApellido() + " ingresa el valor a retirar");
                         int valor = leer.nextInt();
                         if (valor > datosCuenta[posicion2].getSaldo()) {
                             System.err.println("Saldo insuficiente");
                         } else {
                             datosCuenta[posicion2].retirarSaldo(valor);
-                            System.out.println("El retiro se ha realizado con exito\n");
+                            System.out.println("El retiro se ha realizado con exito de la cuenta n. " + datosCuenta[posicion2].getNroCuenta() + "\n");
                         }
+                    } else {
+                        System.err.println("Cuenta no existe");
                     }
                     break;
                 case 5:
-                    System.out.println("Sr(a). "+datos.getNombre()+" "+datos.getApellido()+" digita el numero de cuenta");
+                    System.out.println("Sr(a). " + datos.getNombre() + " " + datos.getApellido() + " digita el numero de cuenta");
                     int cuentaBuscada3 = leer.nextInt();
                     bandera = false;
                     int posicion3 = 0;
                     for (int j = 0; j < datosCuenta.length; j++) {
-                        int data = datosCuenta[j].getNroCuenta();
-                        if (cuentaBuscada3 == data) {
+                        if (datosCuenta[j].getNroCuenta() == cuentaBuscada3) {
                             bandera = true;
                             posicion3 = j;
-                            //System.out.println("" + datosCuenta[j].getNroCuenta());
                             break;
-                        }else{
+                        } else {
                             System.out.print("");
-                        } 
-
+                        }
                     }
                     if (bandera == true) {
-                        System.out.println("Sr(a). "+datos.getNombre()+" "+datos.getApellido()+" el saldo registrado en la cuenta nro " + datosCuenta[posicion3].getNroCuenta() + " es: $" + datosCuenta[posicion3].getSaldo()+"\n");
+                        System.out.println("Sr(a). " + datos.getNombre() + " " + datos.getApellido() + " el saldo registrado en la cuenta nro " + datosCuenta[posicion3].getNroCuenta() + " es: $" + datosCuenta[posicion3].getSaldo() + "\n");
+                    } else {
+                        System.out.println("no existe");
                     }
                     break;
                 case 6:
-                    System.out.println("Hasta luego Sr(a). "+datos.getNombre()+" "+datos.getApellido());
+                    System.out.println("Hasta luego Sr(a). " + datos.getNombre() + " " + datos.getApellido());
                     System.exit(0);
                     break;
             }
-
         } while (opcion != 6);
-
     }
-
 }
